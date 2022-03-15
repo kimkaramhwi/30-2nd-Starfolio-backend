@@ -13,7 +13,7 @@ def login_decorator(func):
             
             access_token = request.headers.get('Authorization')           
             payload      = jwt.decode(access_token, SECRET_KEY, ALGORITHM)
-            user_id      = payload['user_id']
+            user_id      = payload['id']
             request.user = User.objects.get(id = user_id)
 
             return func(self, request, *args, **kwargs)
@@ -25,6 +25,6 @@ def login_decorator(func):
             return JsonResponse({"message" : "INVALID_TOKEN"}, status = 400)
         
         except KeyError:
-            return JsonResponse({"message" : "KEY_ERROR"}, status = 400)
+           return JsonResponse({"message" : "KEY_ERROR"}, status = 400)
 
     return wrapper
