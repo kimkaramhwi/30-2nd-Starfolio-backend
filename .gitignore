@@ -273,11 +273,5 @@ zsdoc/data
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,vim,macos,linux,zsh
 
 my_settings.py
-planets.csv
-planet_images.csv
-galaxy.csv
-accomodations.csv
 db_uploader.py
-planet_themes.csv
-accomodation_images.csv
 /csv/*
