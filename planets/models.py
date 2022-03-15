@@ -8,10 +8,16 @@ class Galaxy(TimeStamp):
     class Meta:
         db_table = 'galaxy'
 
+class PlanetTheme(TimeStamp):
+    name = models.CharField(max_length=45)
+
+    class Meta:
+        db_table = 'planet_themes'
+
 class Planet(TimeStamp):
     name      = models.CharField(max_length=45)
-    theme     = models.CharField(max_length=45)
     thumbnail = models.URLField(max_length=1000)
+    theme     = models.ForeignKey('PlanetTheme', on_delete=models.CASCADE)
     galaxy    = models.ForeignKey('Galaxy', on_delete=models.CASCADE)
 
     class Meta:
