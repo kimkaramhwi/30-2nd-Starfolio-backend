@@ -9,6 +9,7 @@ class Booking(TimeStamp):
     number_of_adults   = models.IntegerField()
     number_of_children = models.IntegerField()
     user_request       = models.TextField(blank=True)
+    price              = models.DecimalField(max_digits=11, decimal_places=2)
     user               = models.ForeignKey('users.User', on_delete=models.CASCADE)
     booking_status     = models.ForeignKey('BookingStatus', on_delete=models.CASCADE)
     planet             = models.ForeignKey('planets.Planet', on_delete=models.CASCADE)
