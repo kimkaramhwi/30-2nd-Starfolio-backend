@@ -7,7 +7,6 @@ class User(TimeStamp):
     password   = models.CharField(max_length=200, blank=True)
     email      = models.EmailField(max_length=100, unique=True)
     kakao_id   = models.BigIntegerField()
-    planets    = models.ManyToManyField('planets.Planet', through='wishlists.WishList')
 
     class Meta:
         db_table = 'users'
