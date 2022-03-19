@@ -7,8 +7,8 @@ from planets.models import Planet
 
 class PlanetListView(View):
     def get(self, request):
-        check_in  = request.GET.get('check_in')
-        check_out = request.GET.get('check_out')
+        check_in  = request.GET.get('check-in')
+        check_out = request.GET.get('check-out')
         sort      = request.GET.get('sort', 'id')
         limit     = int(request.GET.get('limit', 10))
         offset    = int(request.GET.get('offset', 0))
@@ -18,8 +18,8 @@ class PlanetListView(View):
             'theme'     : 'theme_id',
             'searching' : 'name__icontains',
             'people'    : 'accomodation__max_of_people__gte',
-            'min_price' : 'accomodation__price__gte',
-            'max_price' : 'accomodation__price__lte'
+            'min-price' : 'accomodation__price__gte',
+            'max-price' : 'accomodation__price__lte'
         }
 
         filter_set = {
