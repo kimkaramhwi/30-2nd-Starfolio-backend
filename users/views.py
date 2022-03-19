@@ -14,7 +14,7 @@ class KakaoLogInView(View):
             user_info_response  = requests.get(kakao_user_info_api, headers={'Authorization' : f'Bearer {kakao_access_token}'}, timeout=2).json()
             
             kakao_id = user_info_response['id']
-            name     = user_info_response['properties']['ninkname']
+            name     = user_info_response['properties']['nickname']
             email    = user_info_response['kakao_account']['email']
             
             user, is_created = User.objects.get_or_create(
