@@ -25,6 +25,6 @@ def login_decorator(func):
             return JsonResponse({"message" : "INVALID_TOKEN"}, status = 400)
         
         except KeyError:
-            return JsonResponse({"message" : "KEY_ERROR"}, status = 400)
+           return JsonResponse({"message" : "KEY_ERROR"}, status = 400)
 
     return wrapper
