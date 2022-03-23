@@ -1,9 +1,12 @@
-from django.http      import JsonResponse
-from django.views     import View
-from django.db.models import Q
-from datetime         import datetime, timedelta
+from django.core.exceptions import ValidationError
+from django.http            import JsonResponse
+from django.views           import View
+from django.db.models       import Q
+from datetime               import datetime, timedelta
 
-from planets.models import Planet
+
+from planets.models         import Planet, Accomodation, AccomodationImage
+from .utils                 import check_valid_date
 
 class PlanetListView(View):
     def get(self, request):
@@ -69,3 +72,35 @@ class PlanetListView(View):
         } for planet in planets]
 
         return JsonResponse({'planets_list':planets_list}, status=200)
+
+class PlanetDetailView(View):
+    def get(self, request, planet_id, accomodation_id):
+        try:
+            check_in  = request.GET.get('check_in')
+            check_out = request.GET.get('check_out')
+
+            chosen_accomodation        = Accomodation.objects.get(id = accomodation_id, planet_id = planet_id)
+            chosen_accomodation_images = AccomodationImage.objects.select_related('accomodation__planet').filter(accomodation = chosen_accomodation)
+
+            accomodation_information = {
+                'id'            : chosen_accomodation.id,
+                'name'          : chosen_accomodation.name,
+                'stays'         : None,
+                'price'         : None,
+                'images'        : [accomodation_image.image_url for accomodation_image in chosen_accomodation_images],
+                'description'   : chosen_accomodation.description,
+                'min_of_people' : chosen_accomodation.min_of_people,
+                'max_of_people' : chosen_accomodation.max_of_people,
+                'num_of_bed'    : chosen_accomodation.num_of_bed,
+                'invalid_dates' : None
+            }
+
+            accomodation_information = check_valid_date(accomodation_information, check_in, check_out, chosen_accomodation)
+
+            return JsonResponse({'result' : accomodation_information}, status = 200)
+
+        except Accomodation.DoesNotExist:
+            return JsonResponse({'message' : 'INVALID_ACCOMODATION'}, status = 400)
+        
+        except ValidationError as error:
+            return JsonResponse({'message' : error.message}, status = 400)
