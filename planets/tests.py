@@ -340,7 +340,7 @@ class PlanetDetailTest(TestCase):
 
     def test_success_when_list_page_checked_date(self):
         client   = Client()
-        response = client.get('/planets/planet/1/accomodation/1?check_in=2022-04-01&check_out=2022-04-05')
+        response = client.get('/planets/planet/1/accomodation/1?check-in=2022-04-01&check-out=2022-04-05')
 
         self.assertEqual(response.status_code, 200)
 
@@ -366,7 +366,7 @@ class PlanetDetailTest(TestCase):
 
     def test_success_when_list_page_unchecked_date(self):
         client   = Client()
-        response = client.get('/planets/planet/1/accomodation/1?check_in=&check_out=')
+        response = client.get('/planets/planet/1/accomodation/1?check-in=&check-out=')
 
         self.assertEqual(response.status_code, 200)
 
@@ -392,7 +392,7 @@ class PlanetDetailTest(TestCase):
         
     def test_fail_accomodation_booking_with_invalid_check_out_date(self):
         client   = Client()
-        response = client.get('/planets/planet/1/accomodation/1?check_in=2022-04-28&check_out=2022-05-02')
+        response = client.get('/planets/planet/1/accomodation/1?check-in=2022-04-28&check-out=2022-05-02')
 
         self.assertEqual(response.status_code, 400)
 
@@ -405,7 +405,7 @@ class PlanetDetailTest(TestCase):
 
     def test_fail_accomodation_booking_with_invalid_check_in_date(self):
         client   = Client()
-        response = client.get('/planets/planet/1/accomodation/1?check_in=2022-09-03&check_out=2022-09-10')
+        response = client.get('/planets/planet/1/accomodation/1?check-in=2022-09-03&check-out=2022-09-10')
 
         self.assertEqual(response.status_code, 400)
 
@@ -418,7 +418,7 @@ class PlanetDetailTest(TestCase):
 
     def test_fail_invalid_accomodation_id(self):
         client   = Client()
-        response = client.get('/planets/planet/1/accomodation/5?check_in=&check_out=')
+        response = client.get('/planets/planet/1/accomodation/5?check-in=&check-out=')
 
         self.assertEqual(response.status_code, 400)
 
@@ -431,7 +431,7 @@ class PlanetDetailTest(TestCase):
     
     def test_fail_invalid_planet_id(self):
         client   = Client()
-        response = client.get('/planets/planet/2/accomodation/1?check_in=&check_out=')
+        response = client.get('/planets/planet/2/accomodation/1?check-in=&check-out=')
 
         self.assertEqual(response.status_code, 400)
 
