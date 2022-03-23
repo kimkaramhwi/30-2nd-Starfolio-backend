@@ -25,9 +25,13 @@ class KakaoLogInView(View):
                     defaults={'name' : name, 'email' : email}
             )
             
-            access_token = jwt.encode({'id' : user.id}, SECRET_KEY, ALGORITHM)
+            data = {
+                'access_token' : jwt.encode({'id' : user.id}, SECRET_KEY, ALGORITHM),
+                'name'         : name,
+                'email'        : email
+            }
             
-            return JsonResponse({'message' : 'SUCCESS', 'access_token' : access_token}, status = 200)
+            return JsonResponse({'message' : 'SUCCESS', 'data' : data}, status = 200)
         
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
