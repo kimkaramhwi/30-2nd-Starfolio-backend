@@ -76,8 +76,8 @@ class PlanetListView(View):
 class PlanetDetailView(View):
     def get(self, request, planet_id, accomodation_id):
         try:
-            check_in  = request.GET.get('check_in')
-            check_out = request.GET.get('check_out')
+            check_in  = request.GET.get('check-in')
+            check_out = request.GET.get('check-out')
 
             chosen_accomodation        = Accomodation.objects.get(id = accomodation_id, planet_id = planet_id)
             chosen_accomodation_images = AccomodationImage.objects.select_related('accomodation__planet').filter(accomodation = chosen_accomodation)
