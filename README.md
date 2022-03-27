@@ -47,6 +47,8 @@
       
       유강호 - 소셜로그인, 마이페이지
       
+      [FRONTEND GITHUB](https://github.com/wecode-bootcamp-korea/30-2nd-Starfolio-frontend)
+      
   * #### BACKEND
       
       박건규 - 모델링, 회원가입&소셜로그인, 로그인 데코레이터, 숙소 Detail API, users 테스트코드 작성, 숙소 Detail 테스트코드 작성
@@ -71,7 +73,7 @@
     <a href="#"><img src="https://img.shields.io/badge/Django-0B4B33?style=plastic&logo=django&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/MySQL-005E85?style=plastic&logo=mysql&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/AWS-FF9701?style=plastic&logo=aws&logoColor=white"/></a>
-    <a href="#"><img src="https://img.shields.io/badge/docker-0067a3?style=plastic&logo=aws&logoColor=blue"/></a>
+    <a href="#"><img src="https://img.shields.io/badge/docker-0040FF?style=plastic&logo=docker&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/postman-F76934?style=plastic&logo=postman&logoColor=white"/></a>
     
   * #### COMMUNICATION
