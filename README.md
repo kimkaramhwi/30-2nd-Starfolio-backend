@@ -112,7 +112,7 @@
 ---
 # 시연영상
 
-추후 추가 예정
+[starfolio](https://www.youtube.com/watch?v=BfIAwz-oeyc)
 
 <br>
 
