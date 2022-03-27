@@ -2,8 +2,6 @@
 
 ![transparency](https://user-images.githubusercontent.com/57164712/160241939-35ffe254-c193-40c3-b405-3bd1eb31d25a.png)
 
-<br>
-
 ---
 # 참고 사이트
 
